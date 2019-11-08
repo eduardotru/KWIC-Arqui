@@ -19,7 +19,7 @@ int main() {
     if (choice == 1) {
         input = new StdinInputProcessor();
     } else {
-        input = new StdinInputProcessor();
+        input = new FileInputProcessor();
     }
 
     AbstractOutputProcessor* output;
@@ -30,7 +30,7 @@ int main() {
     } else {
         output = new FileOutputProcessor();
     }
-    
+
     words = input -> read(words);
     words = WordProcessor().processWords(words);
     words = RotationProcessor().rotate(words);
@@ -40,5 +40,6 @@ int main() {
     delete words;
     delete input;
     delete output;
+
     return 0;
 }
