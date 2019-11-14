@@ -28,7 +28,7 @@ AbstractWordsContainer* removeLines(AbstractWordsContainer* words){
         cout << "Ingresa cuantas lineas quieres borrar\n";
         cin >> linesToRemove;
         cout << "Ingresa los indices de las lineas a remover\n";
-        vector<int> lineIndexes;
+        vector<int> lineIndexes(linesToRemove);
         for(int i = 0; i < linesToRemove; i++){
             cin >> lineIndexes[i];
         }

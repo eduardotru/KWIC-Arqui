@@ -7,7 +7,7 @@ AbstractWordsContainer* LineRemover::removeIndexes(std::vector<int> lines, Abstr
     AbstractWordsContainer* newLines = new VectorWordsContainer();
     int j = 0;
     for(int i = 0; i < words -> size(); i++){
-        if(i == lines[j]){
+        if(j < lines.size() && i == lines[j]){
             j++;
         }
         else{
