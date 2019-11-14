@@ -1,6 +1,7 @@
 #include "InputProcessor/StdinInputProcessor.h"
 #include "InputProcessor/FileInputProcessor.h"
 #include "WordProcessor/WordProcessor.h"
+#include "WordProcessor/StopWordRemover.h"
 #include "RotationProcessor/RotationProcessor.h"
 #include "Sorter/BubbleSorter.h"
 #include "OutputProcessor/StdoutOutputProcessor.h"
@@ -32,6 +33,14 @@ int main() {
     }
 
     words = input -> read(words);
+
+    cout << "Desea quitar palabras? \n\t1) Si\t2) No" << endl;
+    cin >> choice;
+
+    if (choice == 1) {
+        words = StopWordRemover().processWords(words);
+    }
+
     words = WordProcessor().processWords(words);
     words = RotationProcessor().rotate(words);
     words = BubbleSorter().sort(words);
