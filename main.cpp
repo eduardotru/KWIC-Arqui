@@ -4,6 +4,7 @@
 #include "WordProcessor/StopWordRemover.h"
 #include "RotationProcessor/RotationProcessor.h"
 #include "Sorter/BubbleSorter.h"
+#include "Sorter/ReverseSorter.h"
 #include "OutputProcessor/StdoutOutputProcessor.h"
 #include "OutputProcessor/FileOutputProcessor.h"
 #include "WordsContainer/VectorWordsContainer.h"
@@ -43,7 +44,15 @@ int main() {
 
     words = WordProcessor().processWords(words);
     words = RotationProcessor().rotate(words);
-    words = BubbleSorter().sort(words);
+
+    cout << "Desea las oraciones en orden inverso?\n\t1) Si\t2) No" << endl;
+    cin >> choice;
+    if (choice == 1) {
+        words = ReverseSorter().sort(words);
+    } else {
+        words = BubbleSorter().sort(words);
+    }
+
     words = output -> write(words);
 
     delete words;
